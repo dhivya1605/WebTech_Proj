@@ -28,8 +28,8 @@
             background-size: cover;
             background-position: center;
             display: flex;
-            justify-content: 
-            
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
@@ -57,18 +57,18 @@
             border-radius: 4px;
             width: 100%;
             margin-top: 10px;
+            cursor: pointer;
         }
 
         #sub:hover {
             background-color: #45a049;
-            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div class="left">
         <div class="container">
-            <form action="http://localhost:7000/" method="post">
+            <form id="loginForm" action="http://localhost:7000/" method="post">
                 <label for="email">Email:</label><br>
                 <input type="email" name="email" placeholder="Email address" id="input" required><br>
 
@@ -81,14 +81,25 @@
                     <option value="admin">Admin</option>
                 </select><br>
 
-                <input type="submit" name="submit" id="sub" value="Login">
+                <!-- Green submit button -->
+                <button type="button" id="sub" onclick="handleSubmit()">Submit</button>
             </form>
         </div>
     </div>
     <div class="right">
         <img src="login.png" alt="login">
-  </div>
+    </div>
 
-    <script src="login.js"></script>
+    <script>
+        function handleSubmit() {
+            // You can include form validation or data submission here if needed
+            // Example: 
+            // var email = document.querySelector('input[name="email"]').value;
+            // var password = document.querySelector('input[name="pass"]').value;
+
+            // Redirect to user_home.html after submission
+            window.location.href = "user_home.html";
+        }
+    </script>
 </body>
 </html>
