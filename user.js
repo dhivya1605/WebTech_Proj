@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// CREATE - Add new user
+
 router.post('/', async (req, res) => {
   const { name, email, password, role } = req.body;
   try {
@@ -10,13 +10,13 @@ router.post('/', async (req, res) => {
       'INSERT INTO users (name, email, password, role) VALUES ($1, $2, $3, $4)',
       [name, email, password, role]
     );
-    res.send('✅ User added successfully!');
+    res.send(' User added successfully!');
   } catch (err) {
     res.status(500).send(err.message);
   }
 });
 
-// READ - Get all users
+
 router.get('/', async (req, res) => {
   try {
     const result = await db.query('SELECT * FROM users');
@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// UPDATE - Update user by id
+
 router.put('/:id', async (req, res) => {
   const { name, email, password, role } = req.body;
   const id = req.params.id;
@@ -35,18 +35,18 @@ router.put('/:id', async (req, res) => {
       'UPDATE users SET name=$1, email=$2, password=$3, role=$4 WHERE id=$5',
       [name, email, password, role, id]
     );
-    res.send('✅ User updated successfully!');
+    res.send('User updated successfully!');
   } catch (err) {
     res.status(500).send(err.message);
   }
 });
 
-// DELETE - Delete user by id
+
 router.delete('/:id', async (req, res) => {
   const id = req.params.id;
   try {
     await db.query('DELETE FROM users WHERE id=$1', [id]);
-    res.send('✅ User deleted successfully!');
+    res.send('User deleted successfully!');
   } catch (err) {
     res.status(500).send(err.message);
   }
