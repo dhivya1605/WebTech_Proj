@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// Get all FAQs
+
 router.get('/', (req, res) => {
   db.query('SELECT * FROM faq', (err, result) => {
     if (err) res.status(500).send(err.message);
@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   });
 });
 
-// Add new FAQ
+
 router.post('/', (req, res) => {
   const { question, answer } = req.body;
   db.query(

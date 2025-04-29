@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// POST route to add a new ticket
+
 router.post('/', (req, res) => {
   const { customer_id, agent_id, priority, status } = req.body;
   

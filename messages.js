@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// POST - Add new message
+
 router.post('/', (req, res) => {
   const { ticket_id, sender_id, content } = req.body;
   db.query('INSERT INTO messages (ticket_id, sender_id, content) VALUES ($1, $2, $3)',
@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// GET - Fetch all messages
+
 router.get('/', (req, res) => {
   db.query('SELECT * FROM messages', (err, result) => {
     if (err) {

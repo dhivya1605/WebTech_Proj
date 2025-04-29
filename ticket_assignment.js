@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// Get all ticket assignments
+
 router.get('/', (req, res) => {
   db.query('SELECT * FROM ticket_assignments', (err, result) => {
     if (err) res.status(500).send(err.message);
@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
   });
 });
 
-// Assign ticket to agent
 router.post('/', (req, res) => {
   const { ticket_id, agent_id } = req.body;
   db.query(

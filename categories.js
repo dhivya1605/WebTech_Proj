@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');  // assuming your db connection is in db.js
 
-// POST route for adding category
+
 router.post('/', (req, res) => {
   const { category_id, name } = req.body;
   db.query('INSERT INTO categories (category_id, name) VALUES ($1, $2)',
